@@ -1,0 +1,27 @@
+<!-- <h1>Home</h1>
+<input type="text" [(ngModel)]="content" value="">
+<button type="button" (click)="post()" name="button">add post</button>
+<button type="button" (click)="logout()" name="button">LogOut</button> -->
+<div class="main bg" [ngStyle]="{'background-image': getUrl()}">
+  <div class="container">
+    <div class="post_input">
+      <input type="text" value="" [(ngModel)]="content" id="post_content" class="form-control" placeholder="What's on your mind?">
+      <button type="button" class="btn btnSbmt" (click)="post()" name="button">Add Post</button>
+      <button type="button" class="btn btnSbmt" (click)="logout()" name="button">Log Out</button>
+      <button type="button" class="btn btnSbmt" (click)="myProfile()" name="button">My Profile</button>
+      <!-- <div class="input-group-btn">
+        <button class="btn btn-default" (click)="post()" type="submit">
+          Post
+        </button>
+      </div> -->
+    </div>
+    <div class="post_display">
+      <div class="post_card" *ngFor='let post of posts'>
+        <h4 *ngIf="post.owner_enroll" class="userEnroll" (click)="otherProfile(post.owner_enroll)">{{post.owner_enroll}}</h4>
+        <p *ngIf="post.content">
+          {{ post.content }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

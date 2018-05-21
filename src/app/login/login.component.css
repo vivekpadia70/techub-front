@@ -1,0 +1,42 @@
+.bg{
+    width:100%;
+    height: 100vh;
+    opacity: 1;
+}
+
+.mainForm{
+    background-color: white;
+    box-shadow: 12px 12px 12px ;
+    padding: 30px;
+    margin-top: 20%;
+    border-radius: 40px 0 40px 0;
+    font-family: Montserrat;
+}
+
+.fieldBG{
+    background-color: #e3dbe9 ;
+}
+.titleForm {
+    color: #511775;
+    text-align: center;
+}
+
+.btnSbmt {
+    background-color: #511775;
+    color: white;
+}
+
+.bottomtxt{
+    text-align: center;
+    color: #511775;
+}
+a{
+    color: #511775;
+}
+label{
+    font-weight: bold;
+}
+
+#lnme {
+    float: right;
+}

@@ -1,0 +1,51 @@
+<div class="container">
+  <header>
+    <i class="fa fa-bars" aria-hidden="true"></i>
+  </header>
+  <div class='main'>
+    <div class="row">
+      <div class="left col-lg-4">
+        <div class="photo-left">
+          <img class="photo" src="http://alarishealth.com/wp-content/uploads/2014/06/no-user.png"/>
+        </div>
+        <h4 class="name" *ngIf='userProfile'>{{userProfile.username}}</h4>
+        <p class="info" *ngIf='userProfile.year'>{{userProfile.year}}</p>
+        <p class="info" *ngIf='userProfile.enroll'>{{userProfile.enroll}}</p>
+        <div class="stats row">
+          <div class="stat col-xs-4" style="padding-right: 50px;">
+
+          </div>
+          <div class="stat col-xs-4">
+            <p class="number-stat">32</p>
+            <p class="desc-stat">Friends</p>
+          </div>
+          <div class="stat col-xs-4" style="padding-left: 50px;">
+
+          </div>
+        </div>
+        <p class="desc">{{userProfile.bio}}</p>
+        <div class="social">
+          <i class="fa fa-facebook-square" aria-hidden="true"></i>
+          <i class="fa fa-twitter-square" aria-hidden="true"></i>
+          <i class="fa fa-pinterest-square" aria-hidden="true"></i>
+          <i class="fa fa-tumblr-square" aria-hidden="true"></i>
+        </div>
+      </div>
+      <div class="right col-lg-8">
+        <ul class="nav">
+          <li>Posts</li>
+        </ul>
+        <button type="button" class="btn btnSbmt homeb" (click)='goToHome()' name="button">Home</button>
+        <button type="button" class="btn btnSbmt followb" name="button">Follow</button>
+        <button type="button" class="btn btnSbmt editb" name="button">Edit</button>
+        <button type="button" class="btn btnSbmt logoutb" (click)='logout()' name="button">Logout</button>
+        <!-- <span class="home">home</span>
+        <span class="follow">Follow</span>
+        <span class="edit">Edit</span>
+        <span class="logout">Logout</span> -->
+        <div class="row gallery">
+
+        </div>
+      </div>
+  </div>
+</div>
