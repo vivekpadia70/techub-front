@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
     }
     document.getElementById("post_content").focus();
     this.getPosts();
+
   }
 
   post(){
@@ -33,7 +34,7 @@ export class HomeComponent implements OnInit {
       var post = {content: this.content, owner_enroll: this.enroll, like: 0};
       this.postService.sendPost(post).subscribe(data => {
         console.log(data);
-        window.location.reload();
+        window.location.reload(true);
       });
     }
   }
@@ -67,6 +68,37 @@ export class HomeComponent implements OnInit {
     }
     this.localSt.store('selectedProfile', data);
     this.router.navigate(['/profile']);
+  }
+
+  toggleLike(post){
+    if(this.alreadyLiked(post.likes)){
+      this.doDislike(this.enroll, post._id);
+      window.location.reload(true);
+    }else{
+      this.doLike(this.enroll, post._id);
+      window.location.reload(true);
+    }
+  }
+
+  doLike(enroll, id){
+    this.postService.likePost(enroll, id).subscribe(res => {
+      console.log(res);
+    });
+  }
+
+  doDislike(enroll, id){
+    this.postService.dislikePost(enroll, id).subscribe(res => {
+      console.log(res);
+    });
+  }
+
+  alreadyLiked(likes){
+    var x = this.enroll;
+    if(likes.includes(this.enroll.toString())){
+      return true;
+    }else{
+      return false;
+    }
   }
 
 }

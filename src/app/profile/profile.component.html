@@ -9,8 +9,8 @@
           <img class="photo" src="http://alarishealth.com/wp-content/uploads/2014/06/no-user.png"/>
         </div>
         <h4 class="name" *ngIf='userProfile'>{{userProfile.username}}</h4>
-        <p class="info" *ngIf='userProfile.year'>{{userProfile.year}}</p>
-        <p class="info" *ngIf='userProfile.enroll'>{{userProfile.enroll}}</p>
+        <p class="info" *ngIf='userProfile'>{{userProfile.year}}</p>
+        <p class="info" *ngIf='userProfile'>{{userProfile.enroll}}</p>
         <div class="stats row">
           <div class="stat col-xs-4" style="padding-right: 50px;">
 
@@ -23,7 +23,7 @@
 
           </div>
         </div>
-        <p class="desc">{{userProfile.bio}}</p>
+        <p class="desc" *ngIf="userProfile">{{userProfile.bio}}</p>
         <div class="social">
           <i class="fa fa-facebook-square" aria-hidden="true"></i>
           <i class="fa fa-twitter-square" aria-hidden="true"></i>
@@ -43,8 +43,18 @@
         <span class="follow">Follow</span>
         <span class="edit">Edit</span>
         <span class="logout">Logout</span> -->
-        <div class="row gallery">
-
+        <div class="">
+          <div class="post_display">
+            <div class="post_card" *ngFor='let post of posts'>
+              <h4 *ngIf="post.owner_enroll" class="userEnroll" (click)="otherProfile(post.owner_enroll)">{{post.owner_enroll}}</h4>
+              <p *ngIf="post.content">
+                {{ post.content }}
+              </p>
+              <span (click)="toggleLike(post)" *ngIf="!alreadyLiked(post.likes)"><i class="far fa-heart"></i></span>
+              <span (click)="toggleLike(post)" *ngIf="alreadyLiked(post.likes)"><i class="fas fa-heart"></i></span>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
   </div>

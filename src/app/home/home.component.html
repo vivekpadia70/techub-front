@@ -21,6 +21,8 @@
         <p *ngIf="post.content">
           {{ post.content }}
         </p>
+        <span (click)="toggleLike(post)" *ngIf="!alreadyLiked(post.likes)"><i class="far fa-heart"></i><span class="num_likes">{{ post.likes.length }} Likes</span></span>
+        <span (click)="toggleLike(post)" *ngIf="alreadyLiked(post.likes)"><i class="fas fa-heart"></i><span class="num_likes">{{ post.likes.length }} Likes</span></span>
       </div>
     </div>
   </div>

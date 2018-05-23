@@ -8,8 +8,17 @@
   background-color:rgba(255,255,255,0.7);
 }
 
+i{
+  font-size: 24px;
+  cursor: pointer;
+}
+
 .userEnroll{
   cursor: pointer;
+}
+
+.num_likes{
+  padding-left: 1%;
 }
 
 .bg{

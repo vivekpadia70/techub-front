@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import { PostService } from '../post.service';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Router } from '@angular/router';
 
@@ -10,13 +11,17 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private userService: UserService, private localSt: LocalStorageService, private router: Router) { }
+  constructor(private userService: UserService, private localSt: LocalStorageService, private router: Router, private postService: PostService) { }
 
   userProfile;
+  posts;
+  enroll;
 
   ngOnInit() {
     this.getUserProfile();
     var logged = this.localSt.retrieve('LoggedIn');
+    var x = this.localSt.retrieve('userProfile');
+    this.enroll = x.enroll;
     if(logged === false){
       this.router.navigate(['/login'])
     }
@@ -26,6 +31,8 @@ export class ProfileComponent implements OnInit {
     var enroll = this.localSt.retrieve('selectedProfile');
     this.userService.getUserByEnrollment(enroll).subscribe(res => {
       this.userProfile = res;
+      this.posts = this.userProfile.myPosts;
+      console.log(this.posts);
       this.userProfile.password = "";
     });
   }
@@ -40,4 +47,41 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
+  getPosts(){
+    this.postService.getPost().subscribe(data => {
+      this.posts = data;
+      this.posts.reverse();
+    });
+  }
+
+  toggleLike(post){
+    if(this.alreadyLiked(post.likes)){
+      this.doDislike(this.enroll, post._id);
+      window.location.reload(true);
+    }else{
+      this.doLike(this.enroll, post._id);
+      window.location.reload(true);
+    }
+  }
+
+  doLike(enroll, id){
+    this.postService.likePost(enroll, id).subscribe(res => {
+      console.log(res);
+    });
+  }
+
+  doDislike(enroll, id){
+    this.postService.dislikePost(enroll, id).subscribe(res => {
+      console.log(res);
+    });
+  }
+
+  alreadyLiked(likes){
+    var x = this.enroll;
+    if(likes.includes(this.enroll.toString())){
+      return true;
+    }else{
+      return false;
+    }
+  }
 }
