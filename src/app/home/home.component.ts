@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
     }
     document.getElementById("post_content").focus();
     this.getPosts();
-
   }
 
   post(){
@@ -58,11 +57,12 @@ export class HomeComponent implements OnInit {
   }
 
   myProfile(){
+    var data = this.enroll;
     this.router.navigate(['/profile']);
+    this.localSt.store('selectedProfile', data);
   }
 
   otherProfile(data){
-    console.log(data);
     if(data === this.enroll){
       this.myProfile();
     }

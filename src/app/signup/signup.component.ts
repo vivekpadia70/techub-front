@@ -20,7 +20,11 @@ export class SignupComponent implements OnInit {
     year: "",
     profile_pic: "",
     bio: "",
-    social_links: []
+    social_links: [],
+    myPosts: [],
+    requestedTo: [],
+    requestsFrom: [],
+    friends: []
   }
   ngOnInit() {
   }

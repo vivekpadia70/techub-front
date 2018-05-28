@@ -16,7 +16,7 @@
 
           </div>
           <div class="stat col-xs-4">
-            <p class="number-stat">32</p>
+            <p class="number-stat">32B</p>
             <p class="desc-stat">Friends</p>
           </div>
           <div class="stat col-xs-4" style="padding-left: 50px;">
@@ -33,25 +33,43 @@
       </div>
       <div class="right col-lg-8">
         <ul class="nav">
-          <li>Posts</li>
+          <li>Notifications</li>
         </ul>
-        <button type="button" class="btn btnSbmt homeb" (click)='goToHome()' name="button">Home</button>
-        <button type="button" class="btn btnSbmt followb" name="button">Follow</button>
-        <button type="button" class="btn btnSbmt editb" name="button">Edit</button>
-        <button type="button" class="btn btnSbmt logoutb" (click)='logout()' name="button">Logout</button>
+        <div class="navButtons">
+          <button type="button" class="btn btnSbmt homeb" (click)='goToHome()'>Home</button>
+          <button type="button" class="btn btnSbmt followb" (click)='sendReq()' *ngIf="!notify && !alFriend && !alReq">Friend</button>
+          <button type="button" class="btn btnSbmt followb" (click)='cancelFriend("")' *ngIf="!notify && alFriend">Unfriend</button>
+          <button type="button" class="btn btn-default reqb" *ngIf="alReq">Requested</button>
+          <button type="button" class="btn btnSbmt editb" *ngIf="notify">Edit</button>
+          <button type="button" class="btn btnSbmt logoutb" (click)='logout()' *ngIf="notify">Logout</button>
+        </div>
         <!-- <span class="home">home</span>
         <span class="follow">Follow</span>
         <span class="edit">Edit</span>
         <span class="logout">Logout</span> -->
-        <div class="">
+        <div class="" *ngIf="notify">
           <div class="post_display">
-            <div class="post_card" *ngFor='let post of posts'>
+            <!-- <div class="post_card" *ngFor='let post of posts'>
               <h4 *ngIf="post.owner_enroll" class="userEnroll" (click)="otherProfile(post.owner_enroll)">{{post.owner_enroll}}</h4>
               <p *ngIf="post.content">
                 {{ post.content }}
               </p>
               <span (click)="toggleLike(post)" *ngIf="!alreadyLiked(post.likes)"><i class="far fa-heart"></i></span>
               <span (click)="toggleLike(post)" *ngIf="alreadyLiked(post.likes)"><i class="fas fa-heart"></i></span>
+            </div> -->
+            <div class="" *ngIf="this.notifications.requestsFrom">
+              <div class="reqCard" *ngFor="let req of this.notifications.requestsFrom.reverse()">
+                <h4 (click)="otherProfile(req)">{{ req }}</h4>
+                <button type="button" class="btn btn-success reqAccept reqButton" (click)="acceptReq(req)">Accept</button>
+                <button type="button" class="btn btn-danger reqCancel reqButton" (click)="cancelReq(req)">Cancel</button>
+              </div>
+            </div>
+
+            <div class="" *ngIf="this.notifications.friends">
+              <div class="frndCard" *ngFor="let req of this.notifications.friends.reverse()">
+                <h4 (click)="otherProfile(req)">{{ req }} is now your friend.</h4>
+                <button type="button" class="btn btn-danger reqCancel reqButton" (click)="cancelFriend(req)">Cancel</button>
+              </div>
             </div>
           </div>
         </div>

@@ -20,4 +20,28 @@ export class UserService {
   getUserByEnrollment(data){
     return this.http.get('https://rocky-wave-16596.herokuapp.com/useren/' + data);
   }
+
+  getFriends(data){
+    return this.http.get('https://rocky-wave-16596.herokuapp.com/getFriends/' + data);
+  }
+
+  sendReq(data){
+    return this.http.post('https://rocky-wave-16596.herokuapp.com/sendReq', data)
+  }
+
+  acceptReq(data){
+    return this.http.post('https://rocky-wave-16596.herokuapp.com/acceptReq', data)
+  }
+
+  cancelReq(data){
+    return this.http.post('https://rocky-wave-16596.herokuapp.com/cancelReq', data)
+  }
+
+  delReq(data){
+    return this.http.post('https://rocky-wave-16596.herokuapp.com/delReq', data)
+  }
+
+  notification(data){
+    return this.http.get('https://rocky-wave-16596.herokuapp.com/notifications/' + data);
+  }
 }

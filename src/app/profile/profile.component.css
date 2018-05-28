@@ -228,29 +228,63 @@ header i {
   box-shadow: 0 0 15px rgba(0,0,0,0.2), 0 0 15px rgba(0,0,0,0.2);
 }*/
 
-button{
-  position: absolute;
+.btnSbmt{
   top: 35px;
   font-size: 11pt;
   font-family: 'Montserrat', sans-serif;
   background-color: #511775;
   color: white;
+  margin-left: 10px;
 }
 
-.homeb{
-  right:35%;
+.reqb{
+  font-size: 11pt;
+  font-family: 'Montserrat', sans-serif;
+  margin-left: 10px;
 }
 
-.followb{
-  right: 25%;
+.navButtons{
+  display: flex;
+  margin-left: 68%;
 }
 
-.editb{
-  right: 17%;
+.reqCard{
+  display: flex;
+  margin-top: 4%;
+  padding: 3%;
+  padding-left: 6%;
+  padding-bottom: 3%;
+  box-shadow: 1px 2px 10px;
+  color: #444;
+  font-family: Montserrat;
+  background-color:rgba(255,255,255,0.7);
 }
 
-.logoutb{
-  right: 6%;
+.frndCard{
+  display: flex;
+  margin-top: 4%;
+  padding: 3%;
+  padding-right: 0px;
+  padding-left: 6%;
+  padding-bottom: 3%;
+  box-shadow: 1px 2px 10px;
+  color: #444;
+  font-family: Montserrat;
+  background-color:rgba(255,255,255,0.7);
+}
+
+.reqCard h4{
+  margin-right: 50%;
+  cursor: pointer;
+}
+
+.frndCard h4{
+  cursor: pointer;
+  margin-right: 30%;
+}
+
+.reqButton{
+  margin-left: 10px;
 }
 
 @media (max-width:990px) {
